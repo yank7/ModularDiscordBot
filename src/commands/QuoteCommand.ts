@@ -1,6 +1,11 @@
-export class QuoteCommand implements ICommand{
+import ICommand from "./ICommand"
+import Query from "../model/Query";
+import Discord from "discord.js";
 
-    execute(): void {
-        console.log()
+export default class QuoteCommand implements ICommand{
+
+    execute(query: Query, bot: Discord.Client, msg:Discord.Message): void {
+        console.log("cmdName: " + query.getCmdName() );
+        console.log("Bot: " + bot.user?.tag);
     }
 }

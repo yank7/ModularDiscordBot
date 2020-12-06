@@ -1,4 +1,8 @@
-export class Invoker {
+import Query from "./model/Query";
+import ICommand from "./commands/ICommand";
+import Discord from "discord.js";
+
+export default class Invoker {
     private commandMap: Map<string, ICommand>
 
     constructor() {
@@ -9,13 +13,13 @@ export class Invoker {
         this.commandMap.set(cmdName, cmd);
     }
 
-    public execute(cmdName: string): void {
-        const cmd: ICommand | undefined = this.commandMap.get(cmdName);
+    public execute(query: Query, bot: Discord.Client, msg: Discord.Message): void {
+        const cmd:ICommand | undefined = this.commandMap.get(query.getCmdName());
 
         if(cmd === undefined) {
-            throw new Error("No command registered for " + cmdName);
+            throw new Error("No command registered for " + query.getCmdName());
         } else {
-            cmd.execute()
+            cmd.execute(query, bot, msg);
         }
     }
 }

@@ -1,0 +1,9 @@
+{
+  "name": "modular-discord-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:yank7/ModularDiscordBot.git",
+  "author": "Yan-Eric Cossette <yanerick7@gmail.com>",
+  "license": "GPL v3",
+  "private": true
+}
